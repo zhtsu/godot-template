@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dlpj7uv5cuff3"]
+
+[ext_resource type="Script" uid="uid://d1qbbkyqr5tqd" path="res://core/ui_root.gd" id="1_ohtwx"]
+
+[node name="UiRoot" type="CanvasLayer" unique_id=757008748]
+script = ExtResource("1_ohtwx")
+
+[node name="Bottom" type="CanvasLayer" parent="." unique_id=1943427885]
+
+[node name="Middle" type="CanvasLayer" parent="." unique_id=517712064]
+
+[node name="Top" type="CanvasLayer" parent="." unique_id=1899418567]

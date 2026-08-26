@@ -1,0 +1,15 @@
+{
+    "hidefiles.configurationType": "global",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        ".vscode/": true,
+        ".godot/": true,
+        "**/*.uid": true,
+        "**/*.tscn": true
+    },
+    "godotTools.editorPath.godot4": "c:\\portable\\Godot\\4.7.2\\Godot_v4.7.2-stable_win64.exe"
+}

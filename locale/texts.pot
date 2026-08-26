@@ -1,0 +1,8 @@
+msgid "ui.main_menu.start"
+msgstr ""
+
+msgid "ui.main_menu.settings"
+msgstr ""
+
+msgid "ui.main_menu.settings.res"
+msgstr ""

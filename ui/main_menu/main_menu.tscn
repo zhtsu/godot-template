@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d3tlhj3vcxqsf"]
+
+[ext_resource type="Script" uid="uid://bbey6oc2q4r8v" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+
+[node name="MainMenu" type="Control" unique_id=383127222]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uhj5c")
+
+[node name="Label" type="Label" parent="." unique_id=462241034]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "ui.main_menu.start"
