@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bbey6oc2q4r8v" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
 
-[node name="MainMenu" type="Control" unique_id=383127222]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_menu_item"]
+
+[node name="MainMenu" type="Control" unique_id=1802598410]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,8 +13,118 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uhj5c")
 
-[node name="Label" type="Label" parent="." unique_id=462241034]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Background" type="Control" parent="." unique_id=1302691627]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BaseBlack" type="ColorRect" parent="Background" unique_id=1914060036]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0470588, 1)
+
+[node name="Title" type="Label" parent="." unique_id=1447271426]
+layout_mode = 1
+offset_left = 50.0
+offset_top = 40.0
+offset_right = 410.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.941176, 0.333333, 0.415686, 1)
+theme_override_colors/font_outline_color = Color(0.0196078, 0.0196078, 0.027451, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 40
+text = "ui.main_menu.title"
+
+[node name="MenuList" type="VBoxContainer" parent="." unique_id=1547517693]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -298.0
+offset_right = 390.0
+offset_bottom = -50.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="StartButton" type="Button" parent="MenuList" unique_id=1513270091]
+custom_minimum_size = Vector2(252, 62)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.941176, 0.333333, 0.415686, 1)
+theme_override_colors/font_focus_color = Color(0.941176, 0.333333, 0.415686, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.505882, 0.564706, 1)
+theme_override_colors/font_hover_color = Color(1, 0.505882, 0.564706, 1)
+theme_override_colors/font_outline_color = Color(0.0196078, 0.0196078, 0.027451, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_menu_item")
 text = "ui.main_menu.start"
+alignment = 0
+
+[node name="OptionsButton" type="Button" parent="MenuList" unique_id=852347643]
+custom_minimum_size = Vector2(252, 62)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.486275, 0.509804, 0.6, 1)
+theme_override_colors/font_focus_color = Color(0.941176, 0.333333, 0.415686, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.505882, 0.564706, 1)
+theme_override_colors/font_hover_color = Color(1, 0.505882, 0.564706, 1)
+theme_override_colors/font_outline_color = Color(0.0196078, 0.0196078, 0.027451, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_menu_item")
+text = "ui.main_menu.options"
+alignment = 0
+
+[node name="CreditsButton" type="Button" parent="MenuList" unique_id=1190108989]
+custom_minimum_size = Vector2(252, 62)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.486275, 0.509804, 0.6, 1)
+theme_override_colors/font_focus_color = Color(0.941176, 0.333333, 0.415686, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.505882, 0.564706, 1)
+theme_override_colors/font_hover_color = Color(1, 0.505882, 0.564706, 1)
+theme_override_colors/font_outline_color = Color(0.0196078, 0.0196078, 0.027451, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_menu_item")
+text = "ui.main_menu.credits"
+alignment = 0
+
+[node name="QuitGameButton" type="Button" parent="MenuList" unique_id=626020609]
+custom_minimum_size = Vector2(252, 62)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.486275, 0.509804, 0.6, 1)
+theme_override_colors/font_focus_color = Color(0.941176, 0.333333, 0.415686, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.505882, 0.564706, 1)
+theme_override_colors/font_hover_color = Color(1, 0.505882, 0.564706, 1)
+theme_override_colors/font_outline_color = Color(0.0196078, 0.0196078, 0.027451, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_menu_item")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_menu_item")
+text = "ui.main_menu.quit_game"
+alignment = 0

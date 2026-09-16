@@ -5,4 +5,4 @@ class_name Paths
 
 # ===== UI 场景 =====
 const UI_MAIN_MENU: String =   "res://ui/main_menu/main_menu.tscn"
-const UI_SETTINGS: String =    "res://ui/settings/settings.tscn"
+const UI_OPTIONS: String =    "res://ui/options/options.tscn"

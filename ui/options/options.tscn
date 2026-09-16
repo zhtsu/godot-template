@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://ufjbuvw7hrn6"]
+
+[ext_resource type="Script" uid="uid://ca51ws411vac6" path="res://ui/options/options.gd" id="1_gsckh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dropdown"]
+content_margin_left = 12.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.0705882, 0.0705882, 0.0784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.419608, 0.333333, 0.239216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dropdown_active"]
+content_margin_left = 12.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.109804, 0.109804, 0.121569, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.615686, 0.615686, 0.615686, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_back"]
+
+[node name="Options" type="Control" unique_id=512269198]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gsckh")
+
+[node name="Background" type="Control" parent="." unique_id=726697894]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BaseBlack" type="ColorRect" parent="Background" unique_id=2041098466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0470588, 1)
+
+[node name="Rows" type="VBoxContainer" parent="." unique_id=2111330973]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = -68.0
+offset_right = 294.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="RowResolution" type="HBoxContainer" parent="Rows" unique_id=67196421]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="ResolutionLabel" type="Label" parent="Rows/RowResolution" unique_id=298360383]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 24
+text = "ui.options.resolution"
+vertical_alignment = 1
+
+[node name="ResolutionOption" type="OptionButton" parent="Rows/RowResolution" unique_id=1637686126]
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_dropdown")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dropdown_active")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dropdown_active")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dropdown_active")
+theme_override_constants/modulate_arrow = 1
+fit_to_longest_item = false
+
+[node name="RowGap" type="Control" parent="Rows" unique_id=1958772637]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RowLanguageSelect" type="HBoxContainer" parent="Rows" unique_id=1971428765]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="LanguageSelectLabel" type="Label" parent="Rows/RowLanguageSelect" unique_id=626427991]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 24
+text = "ui.options.language"
+vertical_alignment = 1
+
+[node name="LanguageOption" type="OptionButton" parent="Rows/RowLanguageSelect" unique_id=373167407]
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_dropdown")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dropdown_active")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dropdown_active")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dropdown_active")
+theme_override_constants/modulate_arrow = 1
+fit_to_longest_item = false
+
+[node name="BackButton" type="Button" parent="." unique_id=583759641]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 1
+offset_left = 50.0
+offset_top = 36.0
+offset_right = 210.0
+offset_bottom = 76.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0196078, 0.0196078, 0.027451, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_back")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_back")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_back")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_back")
+text = "ui.options.back"
+alignment = 0

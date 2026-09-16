@@ -12,11 +12,44 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.9\n"
 
+msgid "ui.main_menu.title"
+msgstr "Godot Template"
+
 msgid "ui.main_menu.start"
 msgstr "Start"
 
-msgid "ui.main_menu.settings"
-msgstr "Settings"
+msgid "ui.main_menu.options"
+msgstr "Options"
 
 msgid "ui.main_menu.settings.res"
 msgstr "Resolution"
+
+msgid "ui.main_menu.credits"
+msgstr "Credits"
+
+msgid "ui.main_menu.quit_game"
+msgstr "Quit game"
+
+msgid "ui.main_menu.select"
+msgstr "Select"
+
+msgid "ui.options.text_language"
+msgstr "Text language"
+
+msgid "ui.options.language_name"
+msgstr "English"
+
+msgid "ui.options.resolution"
+msgstr "Resolution"
+
+msgid "ui.options.fullscreen"
+msgstr "Fullscreen"
+
+msgid "ui.options.language"
+msgstr "Language"
+
+msgid "ui.options.select"
+msgstr "Select"
+
+msgid "ui.options.back"
+msgstr "Back"

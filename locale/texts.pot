@@ -1,8 +1,41 @@
+msgid "ui.main_menu.title"
+msgstr ""
+
 msgid "ui.main_menu.start"
 msgstr ""
 
-msgid "ui.main_menu.settings"
+msgid "ui.main_menu.options"
 msgstr ""
 
 msgid "ui.main_menu.settings.res"
+msgstr ""
+
+msgid "ui.main_menu.credits"
+msgstr ""
+
+msgid "ui.main_menu.quit_game"
+msgstr ""
+
+msgid "ui.main_menu.select"
+msgstr ""
+
+msgid "ui.options.text_language"
+msgstr ""
+
+msgid "ui.options.language_name"
+msgstr ""
+
+msgid "ui.options.resolution"
+msgstr ""
+
+msgid "ui.options.fullscreen"
+msgstr ""
+
+msgid "ui.options.language"
+msgstr ""
+
+msgid "ui.options.select"
+msgstr ""
+
+msgid "ui.options.back"
 msgstr ""
