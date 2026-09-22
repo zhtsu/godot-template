@@ -73,6 +73,12 @@ func from_dict(dict: Dictionary) -> void:
 
 ## 用字典打补丁：只认同名字段；值是字典且当前字段本身是分段时递归合并。
 ## 例：{"options": {"language": "en"}} 只改 language，options 里其它字段保持原样。
+##
+## 类型兼容校验（FR-004）：补丁值类型与目标字段不兼容时**拒绝该字段并告警**，保持原值。
+## 为什么必须显式检查、不能指望 set() 兜底：GDScript 对"可转换"的坏类型会**静默转换**
+## （float 字段 ← String "abc" → 0.0、int 字段 ← String "x" → 0），对不可转换的会**静默忽略**，
+## 两种情况都不产生任何告警 —— 也就是静默丢数据。实测证据见
+## specs/001-core-save-refactor/verification.md 的 T006 一节。
 func apply_dict(patch: Dictionary) -> void:
 	var fields: Dictionary = field_names()
 	for key in patch:
@@ -87,8 +93,14 @@ func apply_dict(patch: Dictionary) -> void:
 				current.apply_dict(value)
 			else:
 				push_warning("[%s] 字段 '%s' 是分段，补丁必须是字典，已忽略" % [_who(), key])
-		else:
-			set(key, value)
+			continue
+
+		if not _is_patch_type_compatible(current, value):
+			push_warning("[%s] 字段 '%s' 类型不符：期望 %s，补丁给的是 %s，已拒绝该字段（保持原值 %s）"
+				% [_who(), key, type_string(typeof(current)), type_string(typeof(value)), str(current)])
+			continue
+
+		set(key, value)
 
 
 ## 载入之后自检：先递归所有分段，再调用本类的 validate()
@@ -103,6 +115,22 @@ func validate_tree() -> void:
 ## 自检钩子：子类覆写它修正非法 / 越界的数据（默认什么都不做）
 func validate() -> void:
 	pass
+
+
+## 补丁值的类型是否与目标字段兼容（FR-004 的判定规则，逐条对应 data-model.md §2.2）：
+##   同型 → 接受；int ↔ float 互通 → 接受；其余任意组合 → 不兼容。
+## 注意此处的语义差别：类型不兼容属"调用方写错了"→ 告警 + 保持原值；
+## 值不合理（越界 / 不在候选表）属"值不行"→ 由 validate() 修正。两者 MUST NOT 合并。
+func _is_patch_type_compatible(current: Variant, value: Variant) -> bool:
+	var current_type: int = typeof(current)
+	var value_type: int = typeof(value)
+	if current_type == value_type:
+		return true
+	if current_type == TYPE_INT and value_type == TYPE_FLOAT:
+		return true
+	if current_type == TYPE_FLOAT and value_type == TYPE_INT:
+		return true
+	return false
 
 
 ## 警告信息里用的名字

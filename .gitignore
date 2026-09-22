@@ -1,3 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Spec-kit 目录下载缓存（`specify extension|preset|workflow search` 写出的）。
+# 机器本地且可重新生成；放在这里而不是 .specify/.gitignore，是因为后者是
+# spec-kit 受管文件，改了会被 `specify integration status` 记为 modified。
+.specify/extensions/.cache/

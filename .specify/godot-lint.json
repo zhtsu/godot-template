@@ -1,0 +1,91 @@
+{
+  "_comment": [
+    "godot-template 静态规则校验配置。由 .specify/scripts/powershell/godot-lint.ps1 读取。",
+    "这个文件不是 spec-kit 受管文件（不在 .specify/integrations/*.manifest.json 里），可以自由改。",
+    "severity: error = 违反宪法硬规则，会让 lint 退出码非 0；warn = 存量问题/建议，不阻断。",
+    "违规存量（本仓库 lint 上线时的现状）记录在 .specify/godot-lint-baseline.json，只做提示，不清零也不阻断。"
+  ],
+
+  "godot": {
+    "_comment": "验证工具链。godot 不在 PATH 上，MUST 用具名可执行文件（见 AGENTS.md）。",
+    "executable": "C:\\portable\\Godot\\4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+    "expectedVersionPrefix": "4.7"
+  },
+
+  "tools": {
+    "grep": "C:\\portable\\Grep\\grep.exe",
+    "_comment": "grep 是可选加速项；不存在时脚本回退到 PowerShell 逐行扫描。"
+  },
+
+  "paths": {
+    "_comment": [
+      "宽松档：只扫 .gd 文件，不扫 .tscn/.tres（那里的 ext_resource path 与 script 属性是引擎写死的，必带 res://）。",
+      "只拦真正的字面量：跳过整行注释（# / ##）与紧邻的注释行。"
+    ],
+    "files": ["core", "entry", "ui", "save_data"],
+    "allow": ["core/paths.gd"],
+    "severity": "error"
+  },
+
+  "events": {
+    "_comment": [
+      "事件名的字符串字面量只允许出现在 core/events.gd。",
+      "范围限定在 core/entry/ui/save_data 的 .gd 文件，避免误伤 addons/ 与引擎目录。"
+    ],
+    "files": ["core", "entry", "ui", "save_data"],
+    "allow": ["core/events.gd"],
+    "names": [
+      "open_ui", "close_ui",
+      "save_request", "load_request", "delete_save_request", "save_list_request",
+      "save_finished", "load_finished", "delete_save_finished", "save_list_ready"
+    ],
+    "severity": "error"
+  },
+
+  "ui_bypass": {
+    "_comment": [
+      "宪法原则 II：界面生命周期只能经 Events.OPEN_UI / CLOSE_UI 交给 core/ui_root.gd。",
+      "ui/ 下的脚本里出现 instantiate() / queue_free() 即违规（ui_root.gd 自己不在 ui/ 下，不受影响）。"
+    ],
+    "files": ["ui"],
+    "patterns": ["\\.instantiate\\s*\\(", "\\.queue_free\\s*\\("],
+    "severity": "error"
+  },
+
+  "scene_tree": {
+    "_comment": "宪法技术约束：禁止新增依赖长节点路径的 $A/B/C 或 get_node(\"A/B\") 代码，一律用 %唯一名 或 @export。存量 3 处，规则上线后按 warn 报告。",
+    "files": ["core", "entry", "ui", "save_data"],
+    "severity": "warn"
+  },
+
+  "locale": {
+    "_comment": [
+      "宪法原则 IV：en.po / zh_CN.po / texts.pot 三处 key 集合 MUST 完全一致（error）。",
+      "orphan key = 三处都有、但 core/entry/ui/save_data 的 .gd 与 .tscn 里都没引用：只告警，不阻断。",
+      "orphanBaseline 在减少时不会失败；增加时提示复核。"
+    ],
+    "poFiles": {
+      "en": "locale/en.po",
+      "zh_CN": "locale/zh_CN.po",
+      "pot": "locale/texts.pot"
+    },
+    "keyPrefix": "ui.",
+    "orphanBaseline": 5,
+    "severity": "error",
+    "orphanSeverity": "warn"
+  },
+
+  "save_data": {
+    "_comment": [
+      "宪法原则 III：分段字段只能是基础数据类型；出现 Object/Node/Resource/Callable/Signal/RID 类型标注即违规。",
+      "只看类型标注（: Type 或 -> Type），不看注释与字符串。",
+      "version 联动：本规则只能提示，判断'结构是否变了'需要人；如果确实改了分段结构，必须同时 +1，并在 migrate() 里声明策略（写迁移，或按宪法原则 III 的一次性例外显式拒绝 —— 该例外本仓库已在 001-core-save-refactor 用尽，此后一律要求写迁移）。"
+    ],
+    "dir": "save_data",
+    "allowedExtensions": [
+      "save_section.gd", "save_data.gd", "options_save.gd"
+    ],
+    "forbiddenTypes": ["Object", "Node", "NodePath", "Resource", "Callable", "Signal", "RID"],
+    "severity": "error"
+  }
+}
