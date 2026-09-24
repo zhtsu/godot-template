@@ -22,12 +22,13 @@ const ACTION_PAUSE: String = "pause"
 ## 转场时长（秒）
 const FADE_DURATION: float = 0.25
 
-## 关卡场景的挂载点（本节点的子节点，见 entry/main.tscn）
-@onready var _scene_root: Node = $SceneRoot
+## 关卡场景的挂载点（entry/main.tscn 里的节点，用场景唯一名引用）
+@onready var _scene_root: Node = %SceneRoot
+## 转场遮罩矩形（entry/main.tscn 里的 GameFlow/TransitionLayer/FadeRect）
+@onready var _transition_rect: ColorRect = %FadeRect
 
 var _bus: Node = null
 var _transition: BaseTransition = null
-var _transition_rect: ColorRect = null
 ## 当前关卡实例（没有 = 在标题界面）
 var _current_level: Node = null
 ## 转场动画期间为 true，用来挡住重复的切换请求
@@ -133,27 +134,12 @@ func _on_pause_toggle() -> void:
 
 #region 内部实现
 
-## 转场遮罩：一个盖住全部 UI 的 CanvasLayer + ColorRect，动画借框架的 FadeTransition
+## 转场动画：借框架的 FadeTransition（只借动画，不用它那套整场景切换）。
+## 遮罩矩形本身是 entry/main.tscn 里的 GameFlow/TransitionLayer/FadeRect —— 编辑器里可见可调，
+## 锚定全屏所以不用跟着视口尺寸改 size。
 func _setup_transition() -> void:
-	var layer: CanvasLayer = CanvasLayer.new()
-	# 与框架 scene_manager 的转场层同层号：保证盖在任何界面之上
-	layer.layer = 128
-	add_child(layer)
-
-	_transition_rect = ColorRect.new()
-	_transition_rect.color = Color(0, 0, 0, 0)
-	_transition_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_transition_rect.size = get_viewport().get_visible_rect().size
-	layer.add_child(_transition_rect)
-	get_viewport().size_changed.connect(_resize_transition_rect)
-
 	_transition = FadeTransition.new()
 	_transition.init(_transition_rect)
-
-
-func _resize_transition_rect() -> void:
-	if _transition_rect != null:
-		_transition_rect.size = get_viewport().get_visible_rect().size
 
 
 ## 变黑（切场景前）

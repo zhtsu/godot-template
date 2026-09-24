@@ -11,12 +11,15 @@ Godot **4.7** 项目模板（纯 GDScript），用来快速起各种游戏。分
 | 框架层 | `godot-template/addons/godot_core_system/` | 第三方插件：autoload 单例 `CoreSystem` + 13 个模块 + 工具类。**默认不改**；确需改动要在提交信息里单独说明理由 |
 | 项目层 | `godot-template/` 下的 `core/`、`save_data/`、`ui/`、`game/`、`entry/`、`locale/` | 约定层 + 业务层 |
 
-启动链路：主场景 `entry/main.tscn` → `Main` 下挂 `UiRoot`（UI 记账）、`SaveService`（存档）、
-`GameFlow`（流程 + 关卡容器）→ `entry/main.gd` 发事件打开主菜单。
+启动链路：主场景 `entry/main.tscn` → `Main` 下挂三个**独立场景实例**：`UiRoot`（UI 记账，`core/ui_root.tscn`）、
+`SaveService`（存档，`core/save_service.tscn`）、`GameFlow`（流程 + 关卡容器，`core/game_flow.tscn`）
+→ `entry/main.gd` 发事件打开主菜单。
 
 流程层是**常驻壳**：`UiRoot` / `SaveService` / `GameFlow` 不随关卡切换重建，关卡只被换进
 `GameFlow/SceneRoot`。`boot → title（主菜单）→ gameplay（关卡）→ pause（暂停界面，`get_tree().paused`）`
-全部由 `core/game_flow.gd` 统一驱动。
+全部由 `core/game_flow.gd` 统一驱动。关卡容器（`GameFlow/SceneRoot`）与转场遮罩
+（`GameFlow/TransitionLayer/FadeRect`）都在 `core/game_flow.tscn` 里，编辑器可见可调；
+**不要用代码 `CanvasLayer.new()` 动态造遮罩**（会留下 `@CanvasLayer@N` 这类匿名节点）。
 
 ## 框架层能力速查（动手前先看这里）
 
@@ -172,7 +175,7 @@ pwsh scripts/verify-engine.ps1 -NoBaseline                               # 只�
 | 路径 | 内容 |
 |---|---|
 | `entry/` | `main.tscn`（主场景/常驻壳）、`main.gd` |
-| `core/` | 约定（`paths` / `events` / `types` / `options_data`）+ 服务（`ui_root` / `save_service` / `save_storage` / `options_applier` / `game_flow`） |
+| `core/` | 约定（`paths` / `events` / `types` / `options_data`）+ 服务脚本（`save_storage` / `options_applier`）+ 三个独立场景（`ui_root.tscn` / `save_service.tscn` / `game_flow.tscn`，都挂在 `entry/main.tscn` 上） |
 | `save_data/` | `save_section.gd`（基类）、`save_data.gd`（根）、`meta_save.gd`（元数据段）、`options_save.gd`（设置段） |
 | `ui/` | `main_menu/`、`options/`、`pause_menu/`、`credits/` |
 | `game/` | 关卡场景（模板只放 `example_level`；换成自己的关卡后改 `Paths.GAME_EXAMPLE_LEVEL`） |
