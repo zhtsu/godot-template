@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/credits/credits.gd" id="1_credits"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_credits_item"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_credits")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0470588, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 80.0
+offset_right = 300.0
+offset_bottom = 136.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "ui.credits.title"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 180.0
+offset_right = 300.0
+offset_bottom = 320.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 22
+text = "ui.credits.body"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -110.0
+offset_right = 126.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_credits_item")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_credits_item")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_credits_item")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_credits_item")
+text = "ui.credits.back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]

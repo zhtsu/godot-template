@@ -21,23 +21,11 @@ msgstr "Start"
 msgid "ui.main_menu.options"
 msgstr "Options"
 
-msgid "ui.main_menu.settings.res"
-msgstr "Resolution"
-
 msgid "ui.main_menu.credits"
 msgstr "Credits"
 
 msgid "ui.main_menu.quit_game"
 msgstr "Quit game"
-
-msgid "ui.main_menu.select"
-msgstr "Select"
-
-msgid "ui.options.text_language"
-msgstr "Text language"
-
-msgid "ui.options.language_name"
-msgstr "English"
 
 msgid "ui.options.resolution"
 msgstr "Resolution"
@@ -48,8 +36,44 @@ msgstr "Fullscreen"
 msgid "ui.options.language"
 msgstr "Language"
 
-msgid "ui.options.select"
-msgstr "Select"
+msgid "ui.pause.title"
+msgstr "Paused"
+
+msgid "ui.pause.resume"
+msgstr "Resume"
+
+msgid "ui.pause.return_to_title"
+msgstr "Return to title"
+
+msgid "ui.credits.title"
+msgstr "Credits"
+
+msgid "ui.credits.body"
+msgstr "Skeleton and conventions come from the godot-template project."
+
+msgid "ui.credits.back"
+msgstr "Back"
+
+msgid "ui.game.hint"
+msgstr "Example level - press ESC to pause"
+
+msgid "ui.options.master_volume"
+msgstr "Master volume"
+
+msgid "ui.options.music_volume"
+msgstr "Music volume"
+
+msgid "ui.options.sfx_volume"
+msgstr "Sound volume"
+
+msgid "ui.options.pause_key"
+msgstr "Pause key"
+
+msgid "ui.options.reset_key"
+msgstr "Reset"
+
+msgid "ui.options.waiting_key"
+msgstr "Press a key..."
 
 msgid "ui.options.back"
 msgstr "Back"

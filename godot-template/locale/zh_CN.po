@@ -20,23 +20,11 @@ msgstr "开始"
 msgid "ui.main_menu.options"
 msgstr "设置"
 
-msgid "ui.main_menu.settings.res"
-msgstr "分辨率"
-
 msgid "ui.main_menu.credits"
 msgstr "制作人员"
 
 msgid "ui.main_menu.quit_game"
 msgstr "退出游戏"
-
-msgid "ui.main_menu.select"
-msgstr "选择"
-
-msgid "ui.options.text_language"
-msgstr "文本语言"
-
-msgid "ui.options.language_name"
-msgstr "英语"
 
 msgid "ui.options.resolution"
 msgstr "分辨率"
@@ -47,8 +35,44 @@ msgstr "全屏"
 msgid "ui.options.language"
 msgstr "语言"
 
-msgid "ui.options.select"
-msgstr "选择"
+msgid "ui.pause.title"
+msgstr "已暂停"
+
+msgid "ui.pause.resume"
+msgstr "继续"
+
+msgid "ui.pause.return_to_title"
+msgstr "返回标题"
+
+msgid "ui.credits.title"
+msgstr "制作人员"
+
+msgid "ui.credits.body"
+msgstr "骨架与约定来自 godot-template 项目。"
+
+msgid "ui.credits.back"
+msgstr "返回"
+
+msgid "ui.game.hint"
+msgstr "示例关卡 —— 按 ESC 暂停"
+
+msgid "ui.options.master_volume"
+msgstr "主音量"
+
+msgid "ui.options.music_volume"
+msgstr "音乐音量"
+
+msgid "ui.options.sfx_volume"
+msgstr "音效音量"
+
+msgid "ui.options.pause_key"
+msgstr "暂停键"
+
+msgid "ui.options.reset_key"
+msgstr "恢复默认"
+
+msgid "ui.options.waiting_key"
+msgstr "请按键…"
 
 msgid "ui.options.back"
 msgstr "返回"

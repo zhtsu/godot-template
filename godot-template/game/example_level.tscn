@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cjfjxq40hh6mk"]
+
+[ext_resource type="Script" uid="uid://c2t253m41daw6" path="res://game/example_level.gd" id="1_level"]
+
+[node name="ExampleLevel" type="Node2D" unique_id=1280207955]
+script = ExtResource("1_level")
+
+[node name="Background" type="ColorRect" parent="." unique_id=17121249]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.0980392, 0.117647, 0.145098, 1)
+
+[node name="Hint" type="Label" parent="." unique_id=2072301399]
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 1000.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 24
+text = "ui.game.hint"

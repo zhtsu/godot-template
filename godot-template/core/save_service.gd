@@ -17,7 +17,7 @@ extends Node
 ## 所有请求都进同一个任务队列按顺序执行，一次 drain 有上限，剩下的下一帧继续
 ## （避免监听者在结果事件里继续投任务造成同一帧死循环）。
 ##
-## 职责边界（FR-008）：本类管「什么时候做、以什么顺序做、对外发什么结果」；
+## 职责边界：本类管「什么时候做、以什么顺序做、对外发什么结果」；
 ##   - 纯文件 IO（路径 / 槽位名 / 魔数 / 原子写 / 目录枚举）→ core/save_storage.gd
 ##   - 把设置应用到引擎（语言 / 分辨率 / 全屏）        → core/options_applier.gd
 ## 两者都不持状态、不订阅事件；本类只经参数把 save_dir 与设置对象交给它们。
@@ -30,7 +30,7 @@ extends Node
 ##   2) 没有引用就在请求里带补丁：request.data = {"options": {"language": "zh_CN"}}
 ## 然后 push_event(Events.SAVE_REQUEST, request)；结果听 SAVE_FINISHED。
 
-## 纯文件 IO 模块（不加 class_name，路径常量集中在 Paths —— 宪法 I）
+## 纯文件 IO 模块（不加 class_name；路径经 Paths 里的常量 preload）
 const SaveStorage: GDScript = preload(Paths.SCRIPT_SAVE_STORAGE)
 ## 设置应用模块（同上）
 const OptionsApplier: GDScript = preload(Paths.SCRIPT_OPTIONS_APPLIER)
@@ -49,7 +49,7 @@ var _draining: bool = false
 var _save_dir: String = ""
 
 ## 最近一次载入被拒绝的原因（由 _prepare_load 填写）。
-## 用途：结果事件的 error MUST 可区分（FR-006）—— "文件不存在" 与 "结构版本不兼容"
+## 用途：结果事件的 error 必须可区分 —— "文件不存在" 与 "结构版本不兼容"
 ## 对调用方是两件不同的事，不能都报同一句笼统的话。
 var _load_reject_reason: String = ""
 
@@ -157,7 +157,7 @@ func _do_save(request: Types.SaveRequest) -> void:
 	if not request.data.is_empty():
 		save_data.apply_dict(request.data)
 
-	# 写入路径也跑一次自检（research.md R2 的 B+C 组合）：范围 / 白名单类问题在落盘前被兜住。
+	# 写入路径也跑一次自检：范围 / 白名单类问题在落盘前被兜住。
 	# 与 apply_dict 的分工：类型不兼容属"调用方写错"→ 告警 + 保持原值；
 	# 值不合理属"值不行"→ 由各分段的 validate() 修正。两者不合并。
 	save_data.validate_tree()
@@ -192,7 +192,7 @@ func _do_load(request: Types.LoadRequest) -> void:
 		save_data.validate_tree()
 		CoreSystem.logger.info("[SaveService] 读档成功: %s" % request.slot)
 	else:
-		# 用 _prepare_load 给出的可区分原因，不再用一句笼统的话（FR-006）
+		# 用 _prepare_load 给出的可区分原因，不再用一句笼统的话
 		error = _load_reject_reason if not _load_reject_reason.is_empty() else "存档不存在 / 版本不兼容 / 读取失败"
 		CoreSystem.logger.error("[SaveService] 读档失败: %s（%s）" % [request.slot, error])
 
@@ -225,7 +225,6 @@ func _do_save_list() -> void:
 		saves.append({"slot": slot, "metadata": probe.metadata()})
 
 	# payload 是数组 → 它本身就是订阅者的参数表，所以 [saves] 让订阅者收到 saves 本身
-	# （完整契约见 specs/001-core-save-refactor/contracts/event-payload-contract.md）
 	CoreSystem.event_bus.push_event(Events.SAVE_LIST_READY, [saves])
 
 #endregion
@@ -305,7 +304,7 @@ func _payload_for(slot: String) -> Dictionary:
 
 
 ## 读出"可以载入的字典"；返回空 = 拒绝载入（文件不存在 / 版本比程序新 / 迁移失败）。
-## 被拒时把**可区分的原因**写进 _load_reject_reason（FR-006），调用方用它填 result.error。
+## 被拒时把**可区分的原因**写进 _load_reject_reason，调用方用它填 result.error。
 ## 注意：返回的可能是 migrate() 产生的新字典，所以调用方必须用返回值，
 ## 千万不要再去 clear 原来的 dict（migrate 默认就是原样返回同一个对象，原地清会把数据清没）。
 func _prepare_load(dict: Dictionary) -> Dictionary:

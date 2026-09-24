@@ -63,9 +63,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -294.0
-offset_top = -68.0
+offset_top = -177.0
 offset_right = 294.0
-offset_bottom = 68.0
+offset_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -86,6 +86,7 @@ text = "ui.options.resolution"
 vertical_alignment = 1
 
 [node name="ResolutionOption" type="OptionButton" parent="Rows/RowResolution" unique_id=1637686126]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 34)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -121,6 +122,7 @@ text = "ui.options.language"
 vertical_alignment = 1
 
 [node name="LanguageOption" type="OptionButton" parent="Rows/RowLanguageSelect" unique_id=373167407]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 34)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -136,7 +138,164 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_dropdown_active")
 theme_override_constants/modulate_arrow = 1
 fit_to_longest_item = false
 
-[node name="BackButton" type="Button" parent="." unique_id=583759641]
+[node name="RowGap2" type="Control" parent="Rows" unique_id=41671835]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RowMaster" type="HBoxContainer" parent="Rows" unique_id=2096837082]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="MasterLabel" type="Label" parent="Rows/RowMaster" unique_id=1527072572]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 24
+text = "ui.options.master_volume"
+vertical_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="Rows/RowMaster" unique_id=21584236]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+max_value = 10.0
+step = 1.0
+value = 10.0
+
+[node name="MasterVolumeValue" type="Label" parent="Rows/RowMaster"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RowGap3" type="Control" parent="Rows" unique_id=884666085]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RowMusic" type="HBoxContainer" parent="Rows" unique_id=1739441981]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="MusicLabel" type="Label" parent="Rows/RowMusic" unique_id=79699131]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 24
+text = "ui.options.music_volume"
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Rows/RowMusic" unique_id=538129092]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+max_value = 10.0
+step = 1.0
+value = 10.0
+
+[node name="MusicVolumeValue" type="Label" parent="Rows/RowMusic"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RowGap4" type="Control" parent="Rows" unique_id=276121886]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RowSfx" type="HBoxContainer" parent="Rows" unique_id=1248897683]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="SfxLabel" type="Label" parent="Rows/RowSfx" unique_id=1736264421]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 24
+text = "ui.options.sfx_volume"
+vertical_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="Rows/RowSfx" unique_id=1069989216]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+max_value = 10.0
+step = 1.0
+value = 10.0
+
+[node name="SfxVolumeValue" type="Label" parent="Rows/RowSfx"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RowGap5" type="Control" parent="Rows" unique_id=76940295]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RowPauseKey" type="HBoxContainer" parent="Rows" unique_id=1574916659]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="PauseKeyLabel" type="Label" parent="Rows/RowPauseKey" unique_id=414094772]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 24
+text = "ui.options.pause_key"
+vertical_alignment = 1
+
+[node name="PauseKeyButton" type="Button" parent="Rows/RowPauseKey" unique_id=292787761]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 34)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dropdown")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dropdown_active")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dropdown_active")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dropdown_active")
+
+[node name="ResetKeyButton" type="Button" parent="Rows/RowPauseKey" unique_id=486721784]
+custom_minimum_size = Vector2(80, 34)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_back")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_back")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_back")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_back")
+text = "ui.options.reset_key"
+
+[node name="BackButton" type="Button" parent="." unique_id=501811633]
 custom_minimum_size = Vector2(160, 40)
 layout_mode = 1
 offset_left = 50.0
@@ -157,3 +316,10 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_back")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_back")
 text = "ui.options.back"
 alignment = 0
+
+[connection signal="value_changed" from="Rows/RowMaster/MasterSlider" to="." method="_on_master_volume_changed"]
+[connection signal="value_changed" from="Rows/RowMusic/MusicSlider" to="." method="_on_music_volume_changed"]
+[connection signal="value_changed" from="Rows/RowSfx/SfxSlider" to="." method="_on_sfx_volume_changed"]
+[connection signal="pressed" from="Rows/RowPauseKey/PauseKeyButton" to="." method="_on_pause_key_pressed"]
+[connection signal="pressed" from="Rows/RowPauseKey/ResetKeyButton" to="." method="_on_reset_key_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]

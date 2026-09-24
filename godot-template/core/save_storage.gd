@@ -2,7 +2,7 @@ extends RefCounted
 
 ## 存档的**纯文件 IO**：路径拼接、槽位名校验、魔数 / 长度 / 大小校验、解码、原子写、目录枚举。
 ##
-## 约束（FR-008，见 specs/001-core-save-refactor/data-model.md §5.3）：
+## 约束：
 ##   - **不持状态**：存档目录由调用方以参数传入，本类不缓存它
 ##   - **不订阅事件**、**不持有 SaveData**、不认识 Types
 ##   - **不加 class_name**：由 core/save_service.gd 经 Paths.SCRIPT_SAVE_STORAGE 用 preload 引用，

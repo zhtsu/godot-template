@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dpj8w48q51wkv" path="res://entry/main.gd" id="1_6q5fp"]
 [ext_resource type="PackedScene" uid="uid://dlpj7uv5cuff3" path="res://core/ui_root.tscn" id="2_q0plr"]
 [ext_resource type="PackedScene" path="res://core/save_service.tscn" id="3_save"]
+[ext_resource type="Script" path="res://core/game_flow.gd" id="4_flow"]
 
 [node name="Main" type="Node" unique_id=1803035402]
 script = ExtResource("1_6q5fp")
@@ -10,3 +11,8 @@ script = ExtResource("1_6q5fp")
 [node name="UiRoot" parent="." unique_id=757008748 instance=ExtResource("2_q0plr")]
 
 [node name="SaveService" parent="." unique_id=687232948 instance=ExtResource("3_save")]
+
+[node name="GameFlow" type="Node" parent="."]
+script = ExtResource("4_flow")
+
+[node name="SceneRoot" type="Node" parent="GameFlow"]

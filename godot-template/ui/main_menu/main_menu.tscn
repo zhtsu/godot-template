@@ -128,3 +128,8 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_menu_item")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_menu_item")
 text = "ui.main_menu.quit_game"
 alignment = 0
+
+[connection signal="pressed" from="MenuList/StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MenuList/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MenuList/CreditsButton" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MenuList/QuitGameButton" to="." method="_on_quit_pressed"]

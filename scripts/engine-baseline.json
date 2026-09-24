@@ -1,0 +1,30 @@
+{
+  "_comment": "verify-engine.ps1 生成的引擎输出基线。机器相关：换机器或存档状态大变后请用 -UpdateBaseline 重登。",
+  "generated_at": "2026-09-25T00:10:18",
+  "godot": "C:\\portable\\Godot\\4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+  "version": "4.7.2.stable.official.ed1daf0bf",
+  "project": "C:\\repos\\godot-template\\godot-template",
+  "frames": 5,
+  "ProblemLines": [
+    "ERROR: Failed to open 'user://logs/godot<ts>.log'.",
+    "ERROR: Failed to open log file for writing: user://logs/godot<ts>.log",
+    "ERROR: Failed to read the root certificate store.",
+    "WARNING: <n> ObjectDB instances were leaked at exit (run with `--verbose` for details).",
+    "ERROR: <n> resources still in use at exit (run with --verbose for details)."
+  ],
+  "SmokeLines": [
+    "ERROR: Failed to open 'user://logs/godot<ts>.log'.",
+    "   at: copy (core/io/dir_access.cpp:429)",
+    "ERROR: Failed to open log file for writing: user://logs/godot<ts>.log",
+    "   at: rotate_file (core/io/logger.cpp:169)",
+    "Godot Engine v<version> - https://godotengine.org",
+    "ERROR: Failed to read the root certificate store.",
+    "   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)",
+    "Config loaded successfully from 'user://config.cfg'.",
+    "[<ts>] [INFO] [SaveService] 以当前引擎状态作为设置默认值（(1152, 648) / zh_CN）",
+    "WARNING: <n> ObjectDB instances were leaked at exit (run with `--verbose` for details).",
+    "   at: cleanup (core/object/object.cpp:2536)",
+    "ERROR: <n> resources still in use at exit (run with --verbose for details).",
+    "   at: clear (core/io/resource.cpp:822)"
+  ]
+}
